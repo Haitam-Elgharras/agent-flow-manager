@@ -1,4 +1,4 @@
-package aspects.annotations;
+package ma.enset.aspects.annotations;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;

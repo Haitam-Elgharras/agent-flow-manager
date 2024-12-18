@@ -1,5 +1,8 @@
-package aspects;
+package ma.enset.aspects;
 
+import org.springframework.stereotype.Component;
+
+@Component
 public class SecurityContext
 {
     private static String username = "";

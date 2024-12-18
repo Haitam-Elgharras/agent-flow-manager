@@ -1,10 +1,12 @@
-package entities;
+package ma.enset.entities;
 
-import display.HDMI;
+import ma.enset.display.HDMI;
+import org.springframework.stereotype.Component;
 
 import java.util.HashMap;
 import java.util.Map;
 
+@Component
 public class Container {
     private static Container instance;
     private final Map<String, Agent> agents;

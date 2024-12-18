@@ -1,7 +1,7 @@
-package strategies;
+package ma.enset.strategies;
 
-import entities.Agent;
-import entities.Transaction;
+import ma.enset.entities.Agent;
+import ma.enset.entities.Transaction;
 
 public interface NotificationStrategy {
     void processNotification(Agent notifier, Transaction transaction);

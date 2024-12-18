@@ -1,9 +1,11 @@
-package strategies;
+package ma.enset.strategies;
 
-import entities.Agent;
-import entities.Transaction;
-import entities.TransactionType;
+import ma.enset.entities.Agent;
+import ma.enset.entities.Transaction;
+import ma.enset.entities.TransactionType;
+import org.springframework.stereotype.Component;
 
+@Component
 public class ScoringStrategy implements NotificationStrategy {
     private double score = 0;
     @Override

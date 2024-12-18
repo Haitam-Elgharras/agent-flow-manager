@@ -1,6 +1,6 @@
-package observers;
+package ma.enset.observers;
 
-import entities.Transaction;
+import ma.enset.entities.Transaction;
 
 public interface Observable {
     void subscribe(Observer observer);

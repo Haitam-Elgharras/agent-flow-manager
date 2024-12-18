@@ -1,8 +1,10 @@
-package strategies;
+package ma.enset.strategies;
 
-import entities.Agent;
-import entities.Transaction;
+import ma.enset.entities.Agent;
+import ma.enset.entities.Transaction;
+import org.springframework.stereotype.Component;
 
+@Component
 public class DefaultStrategy implements NotificationStrategy {
     @Override
     public void processNotification(Agent notifier, Transaction transaction) {

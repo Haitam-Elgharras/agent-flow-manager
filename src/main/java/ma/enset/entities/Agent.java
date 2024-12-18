@@ -1,15 +1,16 @@
-package entities;
+package ma.enset.entities;
 
-import aspects.annotations.Cachable;
-import aspects.annotations.Log;
-import aspects.annotations.SecuredBy;
-import strategies.DefaultStrategy;
-import strategies.NotificationStrategy;
-import observers.Observable;
-import observers.Observer;
+import ma.enset.aspects.annotations.Cacheable;
+import ma.enset.aspects.annotations.Log;
+import ma.enset.aspects.annotations.SecuredBy;
+import ma.enset.strategies.DefaultStrategy;
+import ma.enset.strategies.NotificationStrategy;
+import ma.enset.observers.Observable;
+import ma.enset.observers.Observer;
 
 import java.util.ArrayList;
 import java.util.List;
+
 
 public class Agent implements Observer, Observable {
     private final String name;
@@ -26,7 +27,6 @@ public class Agent implements Observer, Observable {
 
     @Override
     public void subscribe(Observer observer) {
-        System.out.println("Agent " + name + " subscribed to " + ((Agent) observer).name);
         observers.add(observer);
     }
 
@@ -36,15 +36,14 @@ public class Agent implements Observer, Observable {
     }
 
     @Override
-    @Log
     public void notifyObservers(Transaction transaction) {
-        System.out.println("Agent " + name + " notifying observers about transaction: " + transaction.getId());
         for (Observer observer : observers) {
             observer.update(this, transaction);
         }
     }
 
     @SecuredBy(roles = {"ADMIN"})
+    @Log
     public void addTransaction(Transaction transaction) {
         transactions.add(transaction);
         notifyObservers(transaction);
@@ -60,7 +59,11 @@ public class Agent implements Observer, Observable {
         this.notificationStrategy = strategy;
     }
 
-    @Cachable
+    public NotificationStrategy getNotificationStrategy() {
+        return notificationStrategy;
+    }
+
+    @Cacheable
     public Transaction getHighestTransaction() {
         return transactions.stream().max((t1, t2) -> Double.compare(t1.getAmount(), t2.getAmount())).orElse(null);
     }

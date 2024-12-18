@@ -1,6 +1,6 @@
-package entities;
-
+package ma.enset.entities;
 import java.util.Date;
+
 public class Transaction {
     private final String id;
     private final Date date;

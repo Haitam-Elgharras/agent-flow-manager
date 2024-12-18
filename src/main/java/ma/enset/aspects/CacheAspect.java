@@ -1,6 +1,6 @@
-package aspects;
+package ma.enset.aspects;
 
-import aspects.annotations.Cachable;
+import ma.enset.aspects.annotations.Cacheable;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
@@ -16,8 +16,8 @@ import java.util.Map;
 public class CacheAspect {
     private final Map<String, Object> cache = new HashMap<>();
 
-    @Around("@annotation(cachable)")
-    public Object cacheMethod(ProceedingJoinPoint joinPoint, Cachable cachable) throws Throwable {
+    @Around("@annotation(cacheable)")
+    public Object cacheMethod(ProceedingJoinPoint joinPoint, Cacheable cacheable) throws Throwable {
         String key = joinPoint.getSignature().toString();
         if (cache.containsKey(key)) {
             return cache.get(key);

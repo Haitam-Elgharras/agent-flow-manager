@@ -1,4 +1,4 @@
-package display;
+package ma.enset.display;
 
 public class HDMIAdapter implements HDMI {
     private final VGA vga;
